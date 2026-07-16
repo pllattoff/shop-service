@@ -37,7 +37,7 @@ public class ProductRepo {
                 return product;
             }
         }
-        System.out.println("ProductRepo::get: product not found: productId = " + productId);
+        System.out.println("ProductRepo::get: Product not found: productId = " + productId);
         return null;
     }
 
