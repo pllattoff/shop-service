@@ -13,26 +13,25 @@ public class ShopService {
         this.orderRepo = orderRepo;
     }
 
-    public void placeOrder(List<Integer> productIds) {
-        System.out.println("ShopService::placeOrder: productIds = " + productIds);
+    public void placeOrder(List<OrderItem> orderItems) {
+        System.out.println("ShopService::placeOrder: orderItems = " + orderItems);
 
-        List<Product> products = productRepo.getByIds(productIds);
-        if (products.isEmpty()) {
-            System.out.println("ShopService::placeOrder: The order was not placed: Such products do not exist");
+        if (orderItems == null || orderItems.isEmpty()) {
+            System.out.println("ShopService::placeOrder: orderItems is null or empty");
             return;
         }
 
         int nextId = orderRepo.getMaxId() + 1;
-        BigDecimal totalPrice = calculateTotalPrice(products);
+        BigDecimal totalPrice = this.calculateTotalPrice(orderItems);
 
-        Order newOrder = new Order(nextId, products, totalPrice);
+        Order newOrder = new Order(nextId, orderItems, totalPrice);
         orderRepo.add(newOrder);
     }
 
-    private BigDecimal calculateTotalPrice(List<Product> products) {
+    private BigDecimal calculateTotalPrice(List<OrderItem> orderItems) {
         BigDecimal totalPrice = BigDecimal.ZERO;
-        for (Product product : products) {
-            totalPrice = totalPrice.add(product.price());
+        for (OrderItem orderItem : orderItems) {
+            totalPrice = totalPrice.add(orderItem.getTotalPrice());
         }
         return totalPrice;
     }
