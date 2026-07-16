@@ -7,9 +7,9 @@ public class ShopService {
     private ProductRepo productRepo;
     private OrderRepo orderRepo;
 
-    public ShopService(OrderRepo orderRepo, ProductRepo productRepo) {
-        this.orderRepo = orderRepo;
+    public ShopService(ProductRepo productRepo, OrderRepo orderRepo) {
         this.productRepo = productRepo;
+        this.orderRepo = orderRepo;
     }
 
     public void placeOrder(List<Integer> productIds) {
