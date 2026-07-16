@@ -9,29 +9,29 @@ public class OrderListRepo implements OrderRepo {
 
     public void add(Order order) {
         if (order == null) {
-            System.out.println("shop.OrderListRepo::add: order is null");
+            System.out.println("OrderListRepo::add: order is null");
         }
         if (orders.contains(order)) {
-            System.out.println("shop.OrderListRepo::add: This order already exists");
+            System.out.println("OrderListRepo::add: This order already exists");
         }
         orders.add(order);
-        System.out.println("shop.OrderListRepo::add: shop.Order added: " + order);
+        System.out.println("OrderListRepo::add: Order added: " + order);
     }
 
     public void remove(Order order) {
         if (order == null) {
-            System.out.println("shop.OrderListRepo::remove: order is null");
+            System.out.println("OrderListRepo::remove: order is null");
         }
         if (!orders.contains(order)) {
-            System.out.println("shop.OrderListRepo::remove: This order does not exist: " + order);
+            System.out.println("OrderListRepo::remove: This order does not exist: " + order);
         }
         orders.remove(order);
-        System.out.println("shop.OrderListRepo::remove: shop.Order removed: " + order);
+        System.out.println("OrderListRepo::remove: Order removed: " + order);
     }
 
     public Order getById(Integer orderId) {
         if (orderId == null) {
-            System.out.println("shop.OrderListRepo::get: orderId is null");
+            System.out.println("OrderListRepo::getById: orderId is null");
         }
 
         for (Order order : orders) {
@@ -39,7 +39,7 @@ public class OrderListRepo implements OrderRepo {
                 return order;
             }
         }
-        System.out.println("shop.OrderListRepo::get: shop.Order not found: orderId = " + orderId);
+        System.out.println("OrderListRepo::getById: Order not found: orderId = " + orderId);
         return null;
     }
 

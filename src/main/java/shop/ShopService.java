@@ -8,7 +8,7 @@ public class ShopService {
     private OrderListRepo orderListRepo = new OrderListRepo();
 
     public void placeOrder(List<Integer> productIds) {
-        System.out.println("shop.ShopService::placeOrder: productIds = " + productIds);
+        System.out.println("ShopService::placeOrder: productIds = " + productIds);
 
         List<Product> products = productRepo.getByIds(productIds);
         int nextId = orderListRepo.getMaxId() + 1;
@@ -17,7 +17,7 @@ public class ShopService {
             Order newOrder = new Order(nextId, products);
             orderListRepo.add(newOrder);
         } else {
-            System.out.println("shop.ShopService::placeOrder: The order was not placed: Such products do not exist");
+            System.out.println("ShopService::placeOrder: The order was not placed: Such products do not exist");
         }
     }
 
