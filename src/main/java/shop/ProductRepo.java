@@ -55,12 +55,6 @@ public class ProductRepo {
                 foundProducts.add(product);
             }
         }
-
-        if (foundProducts.isEmpty()) {
-            System.out.println("ProductRepo::getByIds: No products found for the specified IDs");
-            return null;
-        }
-
         return foundProducts;
     }
 

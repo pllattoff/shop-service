@@ -1,5 +1,6 @@
 package shop;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class ShopService {
@@ -16,14 +17,24 @@ public class ShopService {
         System.out.println("ShopService::placeOrder: productIds = " + productIds);
 
         List<Product> products = productRepo.getByIds(productIds);
-        int nextId = orderRepo.getMaxId() + 1;
-
-        if (products != null) {
-            Order newOrder = new Order(nextId, products);
-            orderRepo.add(newOrder);
-        } else {
+        if (products.isEmpty()) {
             System.out.println("ShopService::placeOrder: The order was not placed: Such products do not exist");
+            return;
         }
+
+        int nextId = orderRepo.getMaxId() + 1;
+        BigDecimal totalPrice = calculateTotalPrice(products);
+
+        Order newOrder = new Order(nextId, products, totalPrice);
+        orderRepo.add(newOrder);
+    }
+
+    private BigDecimal calculateTotalPrice(List<Product> products) {
+        BigDecimal totalPrice = BigDecimal.ZERO;
+        for (Product product : products) {
+            totalPrice = totalPrice.add(product.price());
+        }
+        return totalPrice;
     }
 
 }
