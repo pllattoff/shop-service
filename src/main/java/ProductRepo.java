@@ -41,7 +41,7 @@ public class ProductRepo {
         return null;
     }
 
-    public List<Product> getProducts() {
+    public List<Product> getAll() {
         return products;
     }
 }

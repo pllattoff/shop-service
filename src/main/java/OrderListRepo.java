@@ -41,7 +41,7 @@ public class OrderListRepo {
         return null;
     }
 
-    public List<Order> getOrders() {
+    public List<Order> getAll() {
         return orders;
     }
 }
