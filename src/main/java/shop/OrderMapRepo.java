@@ -1,9 +1,6 @@
 package shop;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class OrderMapRepo implements OrderRepo {
 
@@ -51,5 +48,13 @@ public class OrderMapRepo implements OrderRepo {
     @Override
     public List<Order> getAll() {
         return new ArrayList<>(orders.values());
+    }
+
+    @Override
+    public int getMaxId() {
+        if (orders.isEmpty()) {
+            return 0;
+        }
+        return Collections.max(orders.keySet());
     }
 }

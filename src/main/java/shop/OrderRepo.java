@@ -8,5 +8,6 @@ public interface OrderRepo {
     void remove(Order order);
     Order getById(Integer orderId);
     List<Order> getAll();
+    int getMaxId();
 
 }
