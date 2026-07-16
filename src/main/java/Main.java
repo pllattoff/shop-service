@@ -18,7 +18,7 @@ public class Main {
         productRepo.add(new Product(3, "Monitor", new BigDecimal("249.00")));
         productRepo.add(new Product(4, "Headphones", new BigDecimal("149.95")));
 
-        shopService.placeOrder(List.of(5,6,7));
+        shopService.placeOrder(List.of(1,2,3,4));
 
     }
 }
