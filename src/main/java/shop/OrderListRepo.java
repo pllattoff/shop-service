@@ -3,7 +3,7 @@ package shop;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderListRepo {
+public class OrderListRepo implements OrderRepo {
 
     private List<Order> orders = new ArrayList<>();
 
@@ -29,7 +29,7 @@ public class OrderListRepo {
         System.out.println("shop.OrderListRepo::remove: shop.Order removed: " + order);
     }
 
-    public Order get(Integer orderId) {
+    public Order getById(Integer orderId) {
         if (orderId == null) {
             System.out.println("shop.OrderListRepo::get: orderId is null");
         }

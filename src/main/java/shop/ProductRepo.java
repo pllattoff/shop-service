@@ -29,9 +29,9 @@ public class ProductRepo {
         System.out.println("shop.ProductRepo::remove: shop.Product removed: " + product);
     }
 
-    public Product get(Integer productId) {
+    public Product getById(Integer productId) {
         if (productId == null) {
-            System.out.println("shop.ProductRepo::get: productId is null");
+            System.out.println("shop.ProductRepo::getById: productId is null");
         }
 
         for (Product product : products) {
@@ -39,25 +39,25 @@ public class ProductRepo {
                 return product;
             }
         }
-        System.out.println("shop.ProductRepo::get: shop.Product not found: productId = " + productId);
+        System.out.println("shop.ProductRepo::getById: shop.Product not found: productId = " + productId);
         return null;
     }
 
-    public List<Product> get(List<Integer> productIds) {
+    public List<Product> getByIds(List<Integer> productIds) {
         if (productIds == null) {
-            System.out.println("shop.ProductRepo::get(List): productIds is null");
+            System.out.println("shop.ProductRepo::getByIds: productIds is null");
         }
 
         List<Product> foundProducts = new ArrayList<>();
         for (Integer productId : productIds) {
-            Product product = this.get(productId);
+            Product product = this.getById(productId);
             if (product != null) {
                 foundProducts.add(product);
             }
         }
 
         if (foundProducts.isEmpty()) {
-            System.out.println("shop.ProductRepo::get(List): No products found for the specified IDs");
+            System.out.println("shop.ProductRepo::getByIds: No products found for the specified IDs");
             return null;
         }
 

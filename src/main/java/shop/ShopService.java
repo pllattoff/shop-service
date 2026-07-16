@@ -10,14 +10,14 @@ public class ShopService {
     public void placeOrder(List<Integer> productIds) {
         System.out.println("shop.ShopService::placeOrder: productIds = " + productIds);
 
-        List<Product> products = productRepo.get(productIds);
+        List<Product> products = productRepo.getByIds(productIds);
         int nextId = orderListRepo.getMaxId() + 1;
 
         if (products != null) {
             Order newOrder = new Order(nextId, products);
             orderListRepo.add(newOrder);
         } else {
-            System.out.println("shop.ShopService::placeOrder: The order was not placed: products is null");
+            System.out.println("shop.ShopService::placeOrder: The order was not placed: Such products do not exist");
         }
     }
 
