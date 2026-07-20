@@ -5,7 +5,11 @@ import java.util.List;
 
 public class ProductRepo {
 
-    private List<Product> products = new ArrayList<>();
+    private List<Product> products;
+
+    public ProductRepo(List<Product> products) {
+        this.products = products;
+    }
 
     public void add(Product product) {
         if (product == null) {
